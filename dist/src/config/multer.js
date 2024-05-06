@@ -3,7 +3,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CarImageConfig = void 0;
 const multer_1 = __importDefault(require("multer"));
 const Storage = multer_1.default.diskStorage({
     destination: (req, file, cb) => {
@@ -16,4 +15,4 @@ const Storage = multer_1.default.diskStorage({
 const CarImageConfig = (0, multer_1.default)({
     storage: Storage,
 }).single("carImage");
-exports.CarImageConfig = CarImageConfig;
+exports.default = CarImageConfig;

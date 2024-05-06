@@ -12,16 +12,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getOneCar = exports.createCar = void 0;
+exports.allCars = exports.getOneCar = exports.createCar = void 0;
 const CarModel_1 = __importDefault(require("../model/CarModel"));
 // create car
 const createCar = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { carName, price, image } = req.body;
+        const { carName, price, carImage } = req.body;
         const cars = yield CarModel_1.default.create({
             carName,
             price,
-            image
+            carImage
         });
         return res.status(200).json({
             message: "car created",
@@ -53,3 +53,20 @@ const getOneCar = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.getOneCar = getOneCar;
+// get all cars
+const allCars = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const cars = yield CarModel_1.default.find();
+        return res.status(200).json({
+            message: "all cars gotten",
+            data: cars,
+        });
+    }
+    catch (error) {
+        return res.status(400).json({
+            message: "failed to get all cars",
+            data: error
+        });
+    }
+});
+exports.allCars = allCars;

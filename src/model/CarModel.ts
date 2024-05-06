@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 interface car {
     carName: string;
     price: string;
-    image: string;
+    carImage: string;
 }
 
 interface iCar extends car, mongoose.Document {}
@@ -17,9 +17,9 @@ const carSchema = new mongoose.Schema({
         type: String,
         required: [true, "please, enter car price"]
     },
-    image: {
+    carImage: {
         type: String,
-        required: [true, "please, upload car image"]
+        // required: [true, "please, upload car image"]
     },
 })
 

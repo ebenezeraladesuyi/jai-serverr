@@ -10,13 +10,13 @@ export const createCar = async  (req: Request, res: Response) => {
         const {
             carName,
             price,
-            image
+            carImage
         } = req.body;
 
         const cars = await carModel.create({
             carName,
             price,
-            image
+            carImage
         });
 
         return res.status(200).json({
@@ -44,6 +44,24 @@ export const getOneCar = async (req: Request, res: Response) => {
     } catch (error: any) {
         return res.status(400).json({
             message: "failed to get one car",
+            data: error
+        })
+    }
+}
+
+
+// get all cars
+export const allCars = async (req: Request, res: Response) => {
+    try {
+        const cars = await carModel.find()
+
+        return res.status(200).json({
+            message: "all cars gotten",
+            data: cars,
+        })
+    } catch (error) {
+        return res.status(400).json({
+            message: "failed to get all cars",
             data: error
         })
     }

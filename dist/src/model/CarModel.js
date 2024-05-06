@@ -13,9 +13,9 @@ const carSchema = new mongoose_1.default.Schema({
         type: String,
         required: [true, "please, enter car price"]
     },
-    image: {
+    carImage: {
         type: String,
-        required: [true, "please, upload car image"]
+        // required: [true, "please, upload car image"]
     },
 });
 const carModel = mongoose_1.default.model("allCars", carSchema);

@@ -25,4 +25,4 @@ const CarImageConfig = multer({
 }).single("carImage")
 
 
-export { CarImageConfig }
+export default CarImageConfig;
