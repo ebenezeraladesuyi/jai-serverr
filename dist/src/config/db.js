@@ -14,24 +14,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const dotenv_1 = __importDefault(require("dotenv"));
-const link_1 = require("../../link");
+// import {uri} from "../../link";
 dotenv_1.default.config();
 // const uri = process.env.MONGOOSE_DB
-// const dbConfig = async () : Promise<void> => {
-//     try {
-//         if (!uri) {
-//             throw new Error("MongoDB connection URI is not defined.");
-//         }
-//         const con = await mongoose.connect(uri);
-//         console.log(`Database connected on port ${con.connection.host}`);
-//     } catch (error) {
-//         console.log(`database failed to connect to database`, error)
-//     }
-// }
-// export default dbConfig();
+const uri = process.env.MONGOOSE_DB;
+if (!uri) {
+    console.error("MONGOOSE_DB environment variable is not defined.");
+    process.exit(1); // Exit the process or handle the error appropriately
+}
+// console.log("MONGOOSE_DB value:", uri);
 const dbConfig = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const con = yield mongoose_1.default.connect(link_1.uri);
+        const con = yield mongoose_1.default.connect(uri);
         console.log(`connected to database on port ${con.connection.host}`);
     }
     catch (error) {
