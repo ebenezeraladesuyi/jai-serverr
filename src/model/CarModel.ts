@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 interface car {
     carName: string;
     price: string;
-    carImage: string;
+    carImage: File | null;
 }
 
 interface iCar extends car, mongoose.Document {}
